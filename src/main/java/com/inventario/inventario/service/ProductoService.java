@@ -24,4 +24,12 @@ public class ProductoService {
     public Producto buscarId(int id) {
         return productoRepository.readId(id);
     }
+
+    public Producto modificar(int id, Producto producto) {
+        return productoRepository.update(id, producto);
+    }
+
+    public String borrar(int id) {
+        return productoRepository.delete(id);
+    }
 }
