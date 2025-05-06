@@ -37,4 +37,23 @@ public class ProductoRepository {
         }
         return null;
     }
+    public Producto update(int id, Producto producto){
+        Producto modi=this.readId(id);
+        if (modi!=null) {
+            modi.setNombre(producto.getNombre());
+            modi.setPrecio(producto.getPrecio());
+            modi.setStock(producto.getStock());
+            return producto;
+        }
+        return null;
+    }
+
+    public String delete(int id) {
+        if(productos.removeIf(kill->kill.getId()==id))
+    {
+        return "Producto eliminado";
+    }
+    return null;
+    }
+
 }
