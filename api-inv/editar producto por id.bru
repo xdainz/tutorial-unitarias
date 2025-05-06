@@ -1,0 +1,21 @@
+meta {
+  name: editar producto por id
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8080/api/inventario/5
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "id": 5,
+      "nombre": "Teclado Mecánico",
+      "precio": 40000,
+      "stock": 70,
+      "marca": null
+    }
+}
