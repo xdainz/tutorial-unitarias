@@ -11,5 +11,5 @@ public class Producto {
     private String nombre;
     private int precio;
     private int stock;
-    private Marca marca;
+    private String marca;
 }
