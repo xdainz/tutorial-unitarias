@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RequestMapping("/api/inventario")
 @RestController
 
@@ -32,18 +31,18 @@ public class ProductoController {
         return productoService.listarProductos();
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public Producto getProductoId(@PathVariable int id) {
-        return productoService.buscarId(id);
+        return productoService.buscarProducto(id);
     }
 
     @PutMapping("/{id}")
     public Producto putProducto(@PathVariable int id, @RequestBody Producto producto) {
-        return productoService.modificar(id,producto);
+        return productoService.modificarProducto(id, producto);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteProducto(@PathVariable int id){
-        return productoService.borrar(id);
+    public String deleteProducto(@PathVariable int id) {
+        return productoService.eliminarProducto(id);
     }
 }

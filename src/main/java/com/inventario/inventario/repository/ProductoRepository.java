@@ -29,7 +29,7 @@ public class ProductoRepository {
         return productos;
     }
 
-    public Producto readId(int id) {
+    public Producto read(int id) {
         for (Producto p : productos) {
             if (p.getId() == id) {
                 return p;
@@ -37,23 +37,23 @@ public class ProductoRepository {
         }
         return null;
     }
-    public Producto update(int id, Producto producto){
-        Producto modi=this.readId(id);
-        if (modi!=null) {
-            modi.setNombre(producto.getNombre());
-            modi.setPrecio(producto.getPrecio());
-            modi.setStock(producto.getStock());
-            return producto;
+
+    public Producto update(int id, Producto productoIngresado) {
+        Producto placeholder = this.read(id);
+        if (placeholder != null) {
+            placeholder.setNombre(productoIngresado.getNombre());
+            placeholder.setPrecio(productoIngresado.getPrecio());
+            placeholder.setStock(productoIngresado.getStock());
+            return productoIngresado;
         }
         return null;
     }
 
     public String delete(int id) {
-        if(productos.removeIf(kill->kill.getId()==id))
-    {
-        return "Producto eliminado";
-    }
-    return null;
+        if (productos.removeIf(kill -> kill.getId() == id)) {
+            return "Producto eliminado";
+        }
+        return null;
     }
 
 }

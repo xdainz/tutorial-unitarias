@@ -21,15 +21,15 @@ public class ProductoService {
         return productoRepository.readAll();
     }
 
-    public Producto buscarId(int id) {
-        return productoRepository.readId(id);
+    public Producto buscarProducto(int id) {
+        return productoRepository.read(id);
     }
 
-    public Producto modificar(int id, Producto producto) {
+    public Producto modificarProducto(int id, Producto producto) {
         return productoRepository.update(id, producto);
     }
 
-    public String borrar(int id) {
+    public String eliminarProducto(int id) {
         return productoRepository.delete(id);
     }
 }
