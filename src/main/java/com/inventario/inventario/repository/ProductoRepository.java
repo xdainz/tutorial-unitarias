@@ -12,6 +12,7 @@ import com.inventario.inventario.model.Producto;
 public interface ProductoRepository extends JpaRepository<Producto, Long>{
 
     // CRUD
+    boolean existsById(Long id);
 
     // Create
         // El metodo save viene creado por defecto y no hace falta implementarlo
@@ -25,11 +26,8 @@ public interface ProductoRepository extends JpaRepository<Producto, Long>{
         // findAllById() retorna una lista con los productos q esten en la lista ingresada
 
     // Update
+    
 
     // Delete
-    
-    
-
-    boolean existsById(Long id);
 
 }
