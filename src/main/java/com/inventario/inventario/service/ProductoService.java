@@ -13,23 +13,9 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
-    public Producto guardarProducto(Producto p) {
-        return productoRepository.create(p);
+    @Autowired
+    public List<Producto> findAll(){
+        return productoRepository.findAll();
     }
 
-    public List<Producto> listarProductos() {
-        return productoRepository.readAll();
-    }
-
-    public Producto buscarProducto(int id) {
-        return productoRepository.read(id);
-    }
-
-    public Producto modificarProducto(int id, Producto producto) {
-        return productoRepository.update(id, producto);
-    }
-
-    public String eliminarProducto(int id) {
-        return productoRepository.delete(id);
-    }
 }
