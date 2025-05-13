@@ -3,11 +3,11 @@ package com.inventario.inventario.controller;
 import java.util.List;
 import com.inventario.inventario.model.Producto;
 import com.inventario.inventario.service.ProductoService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +26,14 @@ public class ProductoController {
             return new ResponseEntity<>(productos, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Producto> findProducto(@PathVariable Long id){
+
+        if (productoService.existsById(id)){
+            return new ResponseEntity<>(productoService.findById(id).get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
