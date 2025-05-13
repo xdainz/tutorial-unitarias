@@ -26,6 +26,10 @@ public class ProductoService {
         return productoRepository.findById(id);
     }
 
+    public List<Producto> findAllById(List<Long> ids){
+        return productoRepository.findAllById(ids);
+    }
+
     public Boolean existsById(Long id){
         return productoRepository.existsById(id);
     }

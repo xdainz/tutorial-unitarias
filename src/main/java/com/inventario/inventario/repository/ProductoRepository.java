@@ -20,7 +20,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long>{
 
     Optional<Producto> findById(Long id); // "Optional" ayuda cuando el retorno puede ser nulo
 
-    List<Producto> findAllById(List<Long> ids); // retorna una lista con los productos q esten en la lista ingresada
+        // findAllById() retorna una lista con los productos q esten en la lista ingresada
 
     // Update
 
