@@ -21,6 +21,7 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
+    // obtener todos los productos
     @GetMapping
     public ResponseEntity<List<Producto>> getProductos(){
         List<Producto> productos = productoService.findAll();
@@ -31,6 +32,7 @@ public class ProductoController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
+    // obtener producto segun su id
     @GetMapping("/id/{id}")
     public ResponseEntity<Producto> findProducto(@PathVariable Long id){
 
@@ -40,11 +42,13 @@ public class ProductoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
+    // obtener una lista de productos pasando sus id's
     @GetMapping("/by-id/")
     public ResponseEntity<List<Producto>> getProductosById(@RequestParam List<Long> ids){
         return new ResponseEntity<>(productoService.findAllById(ids), HttpStatus.OK);
     }
     
+    // guardar producto si el id no esta utilizado
     @PostMapping
     public ResponseEntity<Producto> saveProducto(@RequestBody Producto producto){
         if (!productoService.existsById(producto.getId())){
