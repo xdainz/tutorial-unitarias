@@ -10,24 +10,6 @@ import com.inventario.inventario.model.Producto;
 
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long>{
-
-    // CRUD
-    boolean existsById(Long id);
-
-    // Create
-        // El metodo save viene creado por defecto y no hace falta implementarlo
-        // El metodo saveAll guarda la lista de productos ingresados
-    
-    // Read
-    List<Producto> findAll();
-
-    Optional<Producto> findById(Long id); // "Optional" ayuda cuando el retorno puede ser nulo
-
-        // findAllById() retorna una lista con los productos q esten en la lista ingresada
-
-    // Update
-    
-
-    // Delete
+// los metodos on heredados de JpaRepository
 
 }
