@@ -52,4 +52,8 @@ public class ProductoService {
         return null;
 
     }
+
+    public void deleteById(Long id){
+        productoRepository.deleteById(id);
+    }
 }
