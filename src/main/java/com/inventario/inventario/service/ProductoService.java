@@ -37,4 +37,19 @@ public class ProductoService {
     public Producto save(Producto producto){
         return productoRepository.save(producto);
     }
+
+    public Producto update(Long id, Producto producto){
+        Producto holder = productoRepository.findById(id).get();
+
+        if (producto != null){
+            holder.setNombre(producto.getNombre());
+            holder.setPrecio(producto.getPrecio());
+            holder.setStock(producto.getStock());
+            holder.setMarca(producto.getMarca());
+
+            return holder;
+        }
+        return null;
+
+    }
 }

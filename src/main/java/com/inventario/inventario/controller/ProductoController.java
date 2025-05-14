@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +56,16 @@ public class ProductoController {
         return new ResponseEntity<>(productoService.save(producto), HttpStatus.OK);
     }
     return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
+    // actualizar producto por id
+    @PutMapping("/id/{id}")
+    public ResponseEntity<Producto> updateProducto(@PathVariable Long id, @RequestBody Producto producto){
+
+        if (productoService.existsById(id)){
+            return new ResponseEntity<>(productoService.update(id, producto), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }
