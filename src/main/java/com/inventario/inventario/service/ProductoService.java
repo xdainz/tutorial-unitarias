@@ -34,4 +34,7 @@ public class ProductoService {
         return productoRepository.existsById(id);
     }
 
+    public Producto save(Producto producto){
+        return productoRepository.save(producto);
+    }
 }
