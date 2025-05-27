@@ -25,7 +25,7 @@ public class Producto {
     private String nombre;
 
     @Column(length = 15, nullable = false)
-    private Double precio;
+    private Long precio;
 
     @Column(length = 10, nullable = false)
     private int stock;
