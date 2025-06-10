@@ -1,0 +1,40 @@
+package com.pruebas.unitarias.service;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.pruebas.unitarias.model.Mascota;
+import com.pruebas.unitarias.repository.MascotaRepository;
+
+public class MascotaServiceTest {
+    @Mock
+    private MascotaRepository mascotaRepository;
+
+    @InjectMocks
+    private MascotaService mascotaService;
+
+    @BeforeEach
+    void setUp(){
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    void testGuardarMascota(){
+        Mascota mascota = new Mascota(null, "Rex", "Perro", 5);
+        Mascota mascotaGuardada = new Mascota(1L, "Rex", "Perro", 5);
+        
+        when(mascotaRepository.save(mascota)).thenReturn(mascotaGuardada);
+
+        Mascota resultado = mascotaService.guardarMascota(mascota);
+
+        assertThat(resultado.getId()).isEqualTo(1L);
+
+        verify(mascotaRepository).save(mascota);
+    }
+
+}
