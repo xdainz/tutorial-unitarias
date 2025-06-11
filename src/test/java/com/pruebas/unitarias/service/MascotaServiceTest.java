@@ -3,6 +3,9 @@ package com.pruebas.unitarias.service;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -35,6 +38,17 @@ public class MascotaServiceTest {
         assertThat(resultado.getId()).isEqualTo(1L);
 
         verify(mascotaRepository).save(mascota);
+    }
+
+    @Test
+    void testListarMascotas() {
+        Mascota m1 = new Mascota(1L, "Rex", "Perro", 5);
+        Mascota m2 = new Mascota(2L, "Michi", "Gato", 2);
+        when(mascotaRepository.findAll()).thenReturn(Arrays.asList(m1, m2));
+
+        List<Mascota> resultado = mascotaService.listarMascotas();
+        assertThat(resultado).hasSize(2).contains(m1, m2);
+        verify(mascotaRepository).findAll();
     }
 
 }
