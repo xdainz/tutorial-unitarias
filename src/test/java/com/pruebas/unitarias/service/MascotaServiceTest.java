@@ -64,4 +64,20 @@ public class MascotaServiceTest {
         verify(mascotaRepository).findById(1L);
     }
 
+    @Test
+    void testActualizarMascota(){
+        Mascota m1 = new Mascota(1L, "Rex", "Perro", 5);
+        Mascota m2 = new Mascota(1L, "Michi", "Gato", 2);
+
+        when(mascotaRepository.findById(1L)).thenReturn(Optional.of(m1));
+
+        when(mascotaRepository.save(m2)).thenReturn(m1);
+
+        Mascota resultado = mascotaService.actualizarMascota(1L, m2);
+
+        assertThat(resultado).isEqualTo(m2);
+
+        verify(mascotaRepository).save(m1);
+
+        }
 }
