@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,6 +50,18 @@ public class MascotaServiceTest {
         List<Mascota> resultado = mascotaService.listarMascotas();
         assertThat(resultado).hasSize(2).contains(m1, m2);
         verify(mascotaRepository).findAll();
+    }
+
+    @Test
+    void testObtenerMascotaPorId(){
+        Mascota mascota = new Mascota(1L, "Rex", "Perro", 5);
+        when(mascotaRepository.findById(1L)).thenReturn(Optional.of(mascota));
+
+        Mascota resultado = mascotaService.obtenerMascotaPorId(1L).get();
+
+        assertThat(resultado.getId()).isEqualTo(1L);
+
+        verify(mascotaRepository).findById(1L);
     }
 
 }
