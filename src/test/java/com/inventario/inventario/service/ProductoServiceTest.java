@@ -72,6 +72,16 @@ public class ProductoServiceTest {
     }
 
     // EXISTS BY ID
+    @Test
+    void testExistsById(){
+        Long idExistente = 1L;
+        when(productoRepository.existsById(idExistente)).thenReturn(true);
+
+        boolean resultado = productoService.existsById(idExistente);
+        
+        assertTrue(resultado);
+        verify(productoRepository).existsById(idExistente);
+    }
 
     @Test
     void testSave() {
